@@ -1,3 +1,18 @@
-<p>
-  calendar-main works!
-</p>
+<div>
+  <div class="calendar-main__year"></div>
+  <div class="calendar-main__months">
+    <div *ngFor="let month of months">
+    <div (click)="selectMonth()">{{month}}</div>
+    </div>
+  </div>
+  <div class="calendar-main__days">
+    <div class="calendar-main__days" *ngFor="let weekday of weekdays">
+      {{weekday}}
+    </div>
+    <div class="calendar-main__days__weeks" *ngFor="let week of weeks" style="border: 1px solid green;">
+      <div class="calendar-main__days__weeks__day" *ngFor="let day of week" style="border: 1px solid blue;">
+        {{day}}
+      </div>
+    </div>
+  </div>
+</div>
