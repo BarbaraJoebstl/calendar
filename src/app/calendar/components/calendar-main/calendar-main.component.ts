@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'mb-calendar-main',
@@ -7,23 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarMainComponent implements OnInit {
 
-  constructor() { }
-  // TODO service function in reducer
-   //  add as initial state to store
+  @Input()
+  selectedDay: number;
+  @Input()
+  selectedMonth: number;
+  @Input()
+  selectedYear: number;
+
+  constructor() {}
    months: string[] = ['Jan, Feb, Mar, April, May, June, July', '...'];
    days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
    weeks: number[][] = new Array();
+  
    firstDayOfMonth: number;
    numberOfDaysInMonth: number;
 
   ngOnInit() {
-    let today = new Date();
-    let currentMonth = today.getMonth();
-    let currentYear = today.getFullYear();
-    this.firstDayOfMonth = (new Date(currentYear, currentMonth).getDay());
-    this.numberOfDaysInMonth = this.getNumberOfDays(currentYear, currentMonth);
-    this.createWeekDays();
-    console.log(this.weeks);
+
+   this.firstDayOfMonth = this.getWeekdayOfFirstDayOfMonth(this.selectedYear, this.selectedMonth);
+   this.numberOfDaysInMonth = this.getNumberOfDays(this.selectedYear, this.selectedMonth);
+   this.createWeekDays();
   }
 
   /**
@@ -33,6 +36,19 @@ export class CalendarMainComponent implements OnInit {
    */
   getNumberOfDays(year, month): number {
     return (32 - new Date(year, month, 32).getDate());
+  }
+
+  /**
+   * used to get the weekday of the first day of selected month in selected year
+   *
+   * @param selectedYear 
+   * @param selectedMonth 
+   * 
+   * returns an int form 0 (= sunday) to 6 (= saturday)
+   */
+
+  getWeekdayOfFirstDayOfMonth(selectedYear, selectedMonth): number {
+    return (new Date(selectedYear, selectedMonth).getDay());
   }
 
   /**
@@ -66,8 +82,4 @@ export class CalendarMainComponent implements OnInit {
     }
   }
 
-
-  selectMonth(): void {
-   
-  }
 }

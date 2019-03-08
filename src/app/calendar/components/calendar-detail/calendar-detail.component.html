@@ -1,3 +1,17 @@
-<p>
-  calendar-detail works!
-</p>
+<div>
+  selected DAY
+  <h3>{{selectedDay}}</h3>
+
+  <div [ngSwitch]="selectedWeekday">
+      <span *ngSwitchCase="0">Sunday</span>
+      <span *ngSwitchCase="1">Monday</span>
+      <span *ngSwitchCase="2">Tuesday</span>
+      <span *ngSwitchCase="3">Wednesday</span>
+      <span *ngSwitchCase="4">Thursday</span>
+      <span *ngSwitchCase="5">Friday</span>
+      <span *ngSwitchCase="6">Saturday</span>
+      <span *ngSwitchDefault>Sunday</span>
+    </div>
+
+  <h3>{{selectedWeekday}}</h3>
+</div>

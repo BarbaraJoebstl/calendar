@@ -7,6 +7,9 @@ import { CalendarContainerComponent } from './calendar/containers/calendar-conta
 import { CalendarEntryAddComponent } from './calendar/components/calendar-entry-add/calendar-entry-add.component';
 import { CalendarDetailComponent } from './calendar/components/calendar-detail/calendar-detail.component';
 import { CalendarMainComponent } from './calendar/components/calendar-main/calendar-main.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducers } from './app.reducers';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { CalendarMainComponent } from './calendar/components/calendar-main/calen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

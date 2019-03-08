@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'mb-calendar-detail',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendar-detail.component.scss']
 })
 export class CalendarDetailComponent implements OnInit {
+
+  @Input() 
+  selectedDay: number;
+  @Input()
+  selectedWeekday: number;
 
   constructor() { }
 
