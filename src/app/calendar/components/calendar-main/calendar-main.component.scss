@@ -1,3 +1,6 @@
+@import '../../../../style/mb-constants';
+
+
 :host{
     display: flex;
     align-items: row;
@@ -12,18 +15,26 @@
         display: flex;
         align-items: row;
         justify-content: center;
+        color: $font-30;
     }
 
 .calendar-main__months {
     display: flex;
     align-items: row;
     justify-content: space-between;
+    font-size: 14px;
+    color: $font-50;
+    
 }
 
 .calendar-main__days {
     display: flex;
     align-items: row;
     justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    color: $font-80;   
 }
 
 .calendar-main__days__weeks {
@@ -35,20 +46,30 @@
 .calendar-main__days__weeks__day {
     display: flex;
     justify-content: space-between;
+    padding: 12px;
+    color: $font-50;
 }
 
 
     .current-day {
-        background-color: blue;
-        color: white;
+        background-color: $primary-color;
+        color:$background-color;
     }
 
     .selected-day {
-        background-color: pink;
-        color: red;
+        color: $background-color;
+        width: 20px;
+        height: 20px;
+        background: $primary-color;
+        text-align: center;
+        border-radius: 50%;    
+        line-height: 20px;
+        box-sizing: content-box;   
     }
+    
 
     .selected-month {
         font-weight: bold;
+        color: $font-100;
     }
 }

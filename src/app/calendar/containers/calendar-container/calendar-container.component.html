@@ -4,13 +4,14 @@
       [selectedDay] = "selectedDay$ | async"
       [selectedWeekday] ="selectedWeekday$ | async">
     </mb-calendar-detail>
-    <mb-calendar-entry-add></mb-calendar-entry-add>
+    <mb-calendar-entry-add
+      [selectedDateAsString] ="selectedDate$ | async">
+    ></mb-calendar-entry-add>
   </div>
   <mb-calendar-main 
     class="calendar-container__right"
     [selectedDay] = "selectedDay$ | async" 
     [selectedMonth] = "selectedMonth$ | async" 
-    [selectedYear] = "selectedYear$ | async"
-    [weekdayArray] = "getWeekdayArray | async">
+    [selectedYear] = "selectedYear$ | async">
   </mb-calendar-main>
 </div>

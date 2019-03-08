@@ -1,0 +1,12 @@
+@import 'mb-constants.scss';
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: $wallpaper-color;
+    }
+
+    .clickable {
+        &:hover {
+            cursor: pointer;
+        }
+    }

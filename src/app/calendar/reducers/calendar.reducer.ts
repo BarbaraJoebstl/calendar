@@ -65,3 +65,9 @@ export const getSelectedDay = createSelector(selectCalendarState, (state: Calend
 
 export const getSelectedWeekday = createSelector(getSelectedYear, getSelectedMonth, getSelectedDay, (year, month, day) => 
     DateCalcService.calcCurrentWeekday(year, month, day));
+
+export const getSelectedDateAsString = createSelector(getSelectedYear, getSelectedMonth, getSelectedDay, (year, month, day) =>
+{
+    month += 1;
+    return `${year}-${month}-${day}`
+})    

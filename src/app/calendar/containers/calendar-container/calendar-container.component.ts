@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getSelectedYear, getSelectedMonth, getSelectedDay, getSelectedWeekday } from '../../reducers/calendar.reducer';
+import { getSelectedYear, getSelectedMonth, getSelectedDay, getSelectedWeekday, getSelectedDateAsString } from '../../reducers/calendar.reducer';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app-state.model';
@@ -16,6 +16,8 @@ export class CalendarContainerComponent {
   selectedDay$: Observable<number> = this.store.pipe(select(getSelectedDay));
   selectedWeekday$: Observable<number> = this.store.pipe(select(getSelectedWeekday));
   
+  selectedDate$: Observable<string> = this.store.pipe(select(getSelectedDateAsString));
+
   constructor(private store: Store<AppState>) { }
   
 }

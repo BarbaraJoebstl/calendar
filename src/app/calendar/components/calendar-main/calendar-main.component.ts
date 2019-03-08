@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ChangeMonth, ChangeDay, ChangeYear } from '../../actions/calendar.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
-import { getSelectedWeekday } from '../../reducers/calendar.reducer';
-import { getLocaleMonthNames } from '@angular/common';
 
 @Component({
   selector: 'mb-calendar-main',
@@ -18,8 +16,6 @@ export class CalendarMainComponent {
   selectedMonth: number;
   @Input()
   selectedYear: number;
-  @Input()
-  weekdayArray: number[][];
 
 
   crazyArray: number[][];
@@ -39,6 +35,7 @@ export class CalendarMainComponent {
     [11, 'Dez']
   ]);
 
+   // needed for ux 
    days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   
   constructor(private readonly store: Store<AppState>) {}
@@ -65,7 +62,13 @@ export class CalendarMainComponent {
      return `${this.selectedYear}-${month}-${day}` === new Date().toISOString().slice(0,10) ? true : false;
   }
 
-   // add type for observable :O
+/**
+ * used to create a two dimensional array for the week of the current month
+ *  
+ * @param year 
+ * @param month 
+ */
+
   createWeekdayArray(year: number, month: number): any {
     let day = 1;
     let weeks: number[][] = Array();
@@ -73,17 +76,19 @@ export class CalendarMainComponent {
     let firstDayOfMonth = this.getWeekdayOfFirstDayOfMonth(year, month);
     let numberOfDaysInMonth = this.getNumberOfDays(year, month);
 
+    // weeks of the month
     for (let i = 0; i < 6; i++) {
       weeks.push([]);
+      // days of a week
       for (let j = 0; j < 7; j++) {
         if(i === 0 && j < firstDayOfMonth) {
-          weeks[i].push(0);
+          // create empty fields if week does not start on a sunday
+          continue;
         } else if (day > numberOfDaysInMonth){
-          // todo start again with numbers... but for next month until current loop is done
+          // Todo start again with numbers... but for next month until current loop is done
           break;
         } else {
           weeks[i].push(day);
-          // todo check if date is current date and add extra styling;
           day++;
         }
       }
@@ -93,6 +98,8 @@ export class CalendarMainComponent {
 
   /**
    * used to get the number of days in a month, depending on 
+   * 
+   * TODO explain magin number
    * @param year 
    * @param month 
    */

@@ -1,25 +1,26 @@
 <div class="calendar-main"> 
 
   <div class="calendar-main__year">
-    <div (click)=changeYear(-1)>previous</div>
+    <div (click)=changeYear(-1) class="clickable">previous</div>
     <div>{{selectedYear}}</div>
-    <div (click)=changeYear(+1)>next</div>
+    <div (click)=changeYear(+1) class="clickable">next</div>
   </div>
   
   <div class="calendar-main__months">
     <div *ngFor="let month of months | keyvalue" 
           (click)="changeMonth(month.key)"
+          class="clickable"
           [class.selected-month]="month.key === selectedMonth">
           {{month.value}}
     </div>
   </div>
+  <hr>
   
   <div class="calendar-main__days">
     <div  *ngFor="let weekday of days">
       {{weekday}}
     </div>
   </div>
-
   <div>
 
 <div class="calendar-main__days__weeks">
@@ -27,7 +28,8 @@
     <div  *ngFor="let day of week" 
           [class.current-day] = "isToday(day)"
           [class.selected-day] = "day === selectedDay"
-          (click) = changeDay(day)>
+          (click) = changeDay(day)
+          class="clickable">
             {{day}}
     </div>
   </div>

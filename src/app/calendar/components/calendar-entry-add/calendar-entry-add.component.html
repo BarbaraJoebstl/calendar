@@ -1,3 +1,8 @@
 <p>
   calendar-entry-add works!
 </p>
+<input 
+(input)="newEvent = $event.target.value"
+(keyup.enter)="newEvent.length ? addEvent(newEvent) : null"
+/>
+<button (click)=addEvent(newEvent)>+</button>

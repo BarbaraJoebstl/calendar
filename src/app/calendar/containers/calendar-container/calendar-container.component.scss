@@ -1,14 +1,23 @@
+@import '../../../../style/mb-constants';
+
 .calendar-container {
     display: flex;
     align-items: column;
-    border: 1px solid peru;
+    justify-content: center;
     max-width: 750px;
+    box-shadow: $box-shadow;
 }
 
 .calendar-container__left {
     flex: 0 0 30%; 
+    background-color: $primary-color;
+    color: $background-color;
+    border-radius: 20px 0 0 20px;
 }
 
 .calendar-container__right {
     flex: 0 0 70%; 
+    background-color: $background-color;
+    color: $font-100;
+    border-radius: 0 20px 20px 0;
 }

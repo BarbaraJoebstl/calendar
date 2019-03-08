@@ -1,5 +1,5 @@
 export interface MbEvent {
     id?: number;
-    date: string;
+    date: string; //yyyy-dd-mm
     description: string;
 }
