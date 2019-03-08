@@ -5,7 +5,11 @@ export enum CalendarActionType {
     LOAD_MBEVENTS = '[Load] MbEvents',
     LOAD_MBEVENTS_SUCCESS = '[Load] MbEvents Success',
     LOAD_MBEVENTS_FAIL = '[Load] MbEvents Fail',
-    SELECT_DATE = '[Select] Date',
+
+    SELECT_YEAR = '[Select] Year',
+    SELECT_MONTH = '[Select] Month',
+    SELECT_DAY = '[Select] Day',
+
     ADD_MBEVENT = '[Add] MbEvent'
 }
 
@@ -22,9 +26,19 @@ export class LoadMbEventsFail implements Action {
     public readonly type = CalendarActionType.LOAD_MBEVENTS_FAIL;
 }
 
-export class SelectDate implements Action {
-    public readonly type = CalendarActionType.SELECT_DATE;
-    constructor(public payload: string) {};
+export class ChangeYear implements Action {
+    public readonly type = CalendarActionType.SELECT_YEAR;
+    constructor(public payload: number) {};
+}
+
+export class ChangeMonth implements Action {
+    public readonly type = CalendarActionType.SELECT_MONTH;
+    constructor(public payload: number) {};
+}
+
+export class ChangeDay implements Action {
+    public readonly type = CalendarActionType.SELECT_DAY;
+    constructor(public payload: number) {};
 }
 
 export class AddMbEvent implements Action {
@@ -35,5 +49,7 @@ export class AddMbEvent implements Action {
 export type CalendarActions = LoadMbEvents 
     | LoadMbEventsSuccess
     | LoadMbEventsFail
-    | SelectDate
+    | ChangeYear
+    | ChangeMonth
+    | ChangeDay
     | AddMbEvent

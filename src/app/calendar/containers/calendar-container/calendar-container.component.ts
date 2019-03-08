@@ -15,7 +15,7 @@ export class CalendarContainerComponent {
   selectedMonth$: Observable<number> = this.store.pipe(select(getSelectedMonth));
   selectedDay$: Observable<number> = this.store.pipe(select(getSelectedDay));
   selectedWeekday$: Observable<number> = this.store.pipe(select(getSelectedWeekday));
-
+  
   constructor(private store: Store<AppState>) { }
   
 }

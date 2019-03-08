@@ -1,4 +1,54 @@
 :host{
     display: flex;
     align-items: row;
+
+    .calendar-main {
+        width: 100%;
+        padding: 12px;
+
+    }
+
+    .calendar-main__year {
+        display: flex;
+        align-items: row;
+        justify-content: center;
+    }
+
+.calendar-main__months {
+    display: flex;
+    align-items: row;
+    justify-content: space-between;
+}
+
+.calendar-main__days {
+    display: flex;
+    align-items: row;
+    justify-content: space-between;
+}
+
+.calendar-main__days__weeks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.calendar-main__days__weeks__day {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+    .current-day {
+        background-color: blue;
+        color: white;
+    }
+
+    .selected-day {
+        background-color: pink;
+        color: red;
+    }
+
+    .selected-month {
+        font-weight: bold;
+    }
 }

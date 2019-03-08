@@ -1,21 +1,20 @@
 import { CalendarActions, CalendarActionType } from '../actions/calendar.actions';
 import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { DateCalcService } from '../services/date-calc.service';
 
 export interface CalendarState {
     selectedYear: number,
     selectedMonth: number;
     selectedDay: number;
-    selectedWeekday: number;
     eventsForSelectedYear: MbEvent[] | null;
 }
 
 const today = new Date();
 export const initialCalendarState: CalendarState = {
     selectedYear: today.getFullYear(),
-    selectedMonth:  today.getMonth(),
+    selectedMonth: today.getMonth(), // int 0 - 11
     selectedDay: today.getDate(),
-    selectedWeekday: today.getDay(),
     eventsForSelectedYear: []
 }
 
@@ -23,7 +22,7 @@ export function calendarReducer(state: CalendarState = initialCalendarState, act
     switch (action.type) {
         case CalendarActionType.LOAD_MBEVENTS:
             return {
-                ...state
+                ...state,
             };
         case CalendarActionType.LOAD_MBEVENTS_SUCCESS:
             return {
@@ -34,10 +33,21 @@ export function calendarReducer(state: CalendarState = initialCalendarState, act
         return {
             ...state
         };
-        case CalendarActionType.SELECT_DATE:
+        case CalendarActionType.SELECT_YEAR:
         return{
-            ...state
+            ...state,
+            selectedYear: action.payload
         };
+        case CalendarActionType.SELECT_MONTH:
+        return {
+            ...state,
+            selectedMonth: action.payload
+        }
+        case CalendarActionType.SELECT_DAY:
+        return {
+            ...state,
+            selectedDay:  action.payload,
+        }
         case CalendarActionType.ADD_MBEVENT:
         return {
             ...state
@@ -52,4 +62,6 @@ export const selectCalendarState = createFeatureSelector<CalendarState>('calenda
 export const getSelectedYear = createSelector(selectCalendarState, (state: CalendarState) => state.selectedYear);
 export const getSelectedMonth = createSelector(selectCalendarState, (state: CalendarState) => state.selectedMonth);
 export const getSelectedDay = createSelector(selectCalendarState, (state: CalendarState) => state.selectedDay);
-export const getSelectedWeekday = createSelector(selectCalendarState, (state: CalendarState) => state.selectedWeekday);
+
+export const getSelectedWeekday = createSelector(getSelectedYear, getSelectedMonth, getSelectedDay, (year, month, day) => 
+    DateCalcService.calcCurrentWeekday(year, month, day));

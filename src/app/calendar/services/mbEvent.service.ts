@@ -9,9 +9,8 @@ import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 })
 
 export class MbEventService {
-
+ 
   constructor(private readonly http: HttpClient) { }
-
   getMbEventsForYear(year: number): Observable<MbEvent[]>{
     return this.http.get<MbEvent[]>(`${environment.apiBaseUrl}/year/${year}`);
   }
@@ -19,4 +18,5 @@ export class MbEventService {
   addMbEvent(newEvent: MbEvent): void {
     //return this.http.post<>
   }
+
 }

@@ -1,0 +1,14 @@
+.calendar-container {
+    display: flex;
+    align-items: column;
+    border: 1px solid peru;
+    max-width: 750px;
+}
+
+.calendar-container__left {
+    flex: 0 0 30%; 
+}
+
+.calendar-container__right {
+    flex: 0 0 70%; 
+}

@@ -1,14 +1,16 @@
-<div>
-  <div>
+<div class="calendar-container">
+  <div class="calendar-container__left">
     <mb-calendar-detail 
       [selectedDay] = "selectedDay$ | async"
       [selectedWeekday] ="selectedWeekday$ | async">
     </mb-calendar-detail>
     <mb-calendar-entry-add></mb-calendar-entry-add>
   </div>
-    <mb-calendar-main 
-      [selectedDay] = "selectedDay$ | async" 
-      [selectedMonth] = "selectedMonth$ | async" 
-      [selectedYear] = "selectedYear$ | async">
-    </mb-calendar-main>
+  <mb-calendar-main 
+    class="calendar-container__right"
+    [selectedDay] = "selectedDay$ | async" 
+    [selectedMonth] = "selectedMonth$ | async" 
+    [selectedYear] = "selectedYear$ | async"
+    [weekdayArray] = "getWeekdayArray | async">
+  </mb-calendar-main>
 </div>
