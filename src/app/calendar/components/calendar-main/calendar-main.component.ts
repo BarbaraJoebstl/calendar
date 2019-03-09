@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ChangeMonth, ChangeDay, ChangeYear } from '../../actions/calendar.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
+import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 
 @Component({
   selector: 'mb-calendar-main',
@@ -16,7 +17,8 @@ export class CalendarMainComponent {
   selectedMonth: number;
   @Input()
   selectedYear: number;
-
+  @Input()
+  eventsForMonth: MbEvent[];
 
   crazyArray: number[][];
 
@@ -119,5 +121,13 @@ export class CalendarMainComponent {
  private getWeekdayOfFirstDayOfMonth(year: number, month: number): number {
     return (new Date(year, month).getDay());
   }
+
+
+hasEvent(day: number): boolean {
+  if(this.eventsForMonth) {
+    return this.eventsForMonth.filter(event => event.day === day).length >= 1 ? true: false;
+  }
+  return false;
+}
 
 }

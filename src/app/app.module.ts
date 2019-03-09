@@ -9,7 +9,10 @@ import { CalendarDetailComponent } from './calendar/components/calendar-detail/c
 import { CalendarMainComponent } from './calendar/components/calendar-main/calendar-main.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { CalendarEffects } from '../app/calendar/effects/calendar.effect';
 import { appReducers } from './app.reducers';
+import { HttpClientModule } from '@angular/common/http'; 
+
 
 @NgModule({
   declarations: [
@@ -22,9 +25,10 @@ import { appReducers } from './app.reducers';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CalendarEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

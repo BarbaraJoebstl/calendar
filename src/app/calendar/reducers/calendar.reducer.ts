@@ -7,7 +7,7 @@ export interface CalendarState {
     selectedYear: number,
     selectedMonth: number;
     selectedDay: number;
-    eventsForSelectedYear: MbEvent[] | null;
+    events: MbEvent[];
 }
 
 const today = new Date();
@@ -15,7 +15,7 @@ export const initialCalendarState: CalendarState = {
     selectedYear: today.getFullYear(),
     selectedMonth: today.getMonth(), // int 0 - 11
     selectedDay: today.getDate(),
-    eventsForSelectedYear: []
+    events: []
 }
 
 export function calendarReducer(state: CalendarState = initialCalendarState, action: CalendarActions): CalendarState {
@@ -27,7 +27,7 @@ export function calendarReducer(state: CalendarState = initialCalendarState, act
         case CalendarActionType.LOAD_MBEVENTS_SUCCESS:
             return {
                 ...state,
-                eventsForSelectedYear: action.payload
+                events: action.payload !== null ? action.payload : []
             };
         case CalendarActionType.LOAD_MBEVENTS_FAIL:
         return {
@@ -50,7 +50,12 @@ export function calendarReducer(state: CalendarState = initialCalendarState, act
         }
         case CalendarActionType.ADD_MBEVENT:
         return {
-            ...state
+            ...state,
+        }
+        case CalendarActionType.SAVE_MBEVENT:
+        return {
+            ...state,
+            events: state.events ? [...state.events, action.payload] : new Array(action.payload)
         }
         default:
             return state;
@@ -65,6 +70,14 @@ export const getSelectedDay = createSelector(selectCalendarState, (state: Calend
 
 export const getSelectedWeekday = createSelector(getSelectedYear, getSelectedMonth, getSelectedDay, (year, month, day) => 
     DateCalcService.calcCurrentWeekday(year, month, day));
+
+export const getEventList = createSelector(selectCalendarState, (state: CalendarState) => state.events);  
+
+export const getEventsForSelectedMonth = createSelector(getSelectedYear, getSelectedMonth, getEventList, (year, month, list) =>
+    DateCalcService.filterEventsForCurrentMonth(year, month, list));
+
+export const getEventsForSelectedDay = createSelector(getSelectedYear, getSelectedMonth, getSelectedDay, getEventList, (year, month, day, list) =>
+    DateCalcService.filterEventsForCurrentDay(year, month, day, list));
 
 export const getSelectedDateAsString = createSelector(getSelectedYear, getSelectedMonth, getSelectedDay, (year, month, day) =>
 {

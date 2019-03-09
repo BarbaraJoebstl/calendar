@@ -1,11 +1,9 @@
 <div class="calendar-main"> 
-
   <div class="calendar-main__year">
     <div (click)=changeYear(-1) class="clickable">previous</div>
     <div>{{selectedYear}}</div>
     <div (click)=changeYear(+1) class="clickable">next</div>
   </div>
-  
   <div class="calendar-main__months">
     <div *ngFor="let month of months | keyvalue" 
           (click)="changeMonth(month.key)"
@@ -14,24 +12,23 @@
           {{month.value}}
     </div>
   </div>
-  <hr>
-  
+  <hr> 
   <div class="calendar-main__days">
     <div  *ngFor="let weekday of days">
       {{weekday}}
     </div>
   </div>
-  <div>
-
+<div>
 <div class="calendar-main__days__weeks">
   <div class="calendar-main__days__weeks__day" *ngFor="let week of crazyArray">
-    <div  *ngFor="let day of week" 
-          [class.current-day] = "isToday(day)"
-          [class.selected-day] = "day === selectedDay"
-          (click) = changeDay(day)
-          class="clickable">
-            {{day}}
+    <div  *ngFor="let day of week; index as i; first as isFirst" 
+      [ngClass] = "{
+        'current-day': isToday(),
+        'selected-day': day === selectedDay,
+        'event': hasEvent(day)
+        }"
+        (click) = changeDay(day)
+        class="clickable">{{day}}
     </div>
   </div>
 </div>
-  

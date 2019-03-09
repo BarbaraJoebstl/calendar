@@ -27,6 +27,8 @@
     
 }
 
+
+
 .calendar-main__days {
     display: flex;
     align-items: row;
@@ -71,5 +73,16 @@
     .selected-month {
         font-weight: bold;
         color: $font-100;
+    }
+
+    .event::after {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            -moz-border-radius: 7.5px;
+            -webkit-border-radius: 7.5px;
+            border-radius: 5px;
+            background-color: #69b6d5;
     }
 }

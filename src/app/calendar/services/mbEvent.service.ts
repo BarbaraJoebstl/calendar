@@ -11,12 +11,13 @@ import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 export class MbEventService {
  
   constructor(private readonly http: HttpClient) { }
-  getMbEventsForYear(year: number): Observable<MbEvent[]>{
-    return this.http.get<MbEvent[]>(`${environment.apiBaseUrl}/year/${year}`);
+
+  loadEvents(): Observable<MbEvent[]> {
+    return this.http.get<MbEvent[]>(`${environment.apiBaseUrl}/mbEvents`);
   }
 
-  addMbEvent(newEvent: MbEvent): void {
-    //return this.http.post<>
+  addMbEvent(newEvents: MbEvent[]): any {
+    return this.http.post(`${environment.apiBaseUrl}/mbEvents`, newEvents);
   }
 
 }

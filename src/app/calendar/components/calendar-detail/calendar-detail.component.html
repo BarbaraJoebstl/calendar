@@ -10,4 +10,15 @@
     <span *ngSwitchCase="6">Saturday</span>
     <span *ngSwitchDefault>Sunday</span>
 </div>
+<div>
+    <h4>Events:</h4>
+    <div *ngFor="let event of eventsForDay">
+        <div>
+                {{event.description}}
+                {{event.date}}
+        </div>
+    
+        <span (click)=delete(event.id)>X</span>
+    </div>
 
+</div>
