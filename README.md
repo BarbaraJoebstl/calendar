@@ -1,4 +1,5 @@
 # Calendar
+![calendar](https://user-images.githubusercontent.com/6280553/54088213-e84dab80-435b-11e9-8427-b51d5f1447b0.png)
 
 ## Features
 - The calendar displays the current month and day by default.
