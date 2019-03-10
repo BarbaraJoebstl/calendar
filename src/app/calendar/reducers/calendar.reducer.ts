@@ -51,21 +51,29 @@ export function calendarReducer(state: CalendarState = initialCalendarState, act
         case CalendarActionType.ADD_MBEVENT:
         return {
             ...state,
-        }
-        case CalendarActionType.SAVE_MBEVENT:
-        return {
-            ...state,
             events: state.events ? [...state.events, action.payload] : new Array(action.payload)
         }
-        case CalendarActionType.REMOVE_MBEVENT:
+        case CalendarActionType.ADD_MBEVENT_SUCCESS:
+        return {
+            ...state
+        }
+        case CalendarActionType.ADD_MBEVENT_FAIL: 
         return {
             ...state,
             events: state.events.filter((mbEvent) => mbEvent.id !== action.payload)
         }
+        case CalendarActionType.DELETE_MBEVENT:
+        return {
+            ...state,
+            events: state.events.filter((mbEvent) => mbEvent.id !== action.payload)
+        }
+        case CalendarActionType.DELETE_MBEVENT_SUCCESS:
+        return {
+            ...state
+        }
         case CalendarActionType.DELETE_MBEVENT_FAIL:
         return {
             ...state,
-            //events: [...state.events, action.payload]
         }
 
         default:

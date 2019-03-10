@@ -7,7 +7,6 @@ import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 export class DateCalcService {
 
   constructor() { }
-
   /**
    * 
    * used to calc the weekday of the currently selected day
@@ -16,7 +15,6 @@ export class DateCalcService {
    * @param day 
    */
   public static calcCurrentWeekday(year: number, month: number, day: number) : number {
-    
     month += 1; // because we normally work with values from 0-11, caused by JS day()
     return new Date(`${year}-${month}-${day}`).getDay();
   }
@@ -25,9 +23,8 @@ export class DateCalcService {
     month +=1;
     const timestampToCompare: RegExp = new RegExp(`^${year}-${month}`);
 
-
-
     if (list) { 
+      console.log('list', list);
       return list.filter(listelement => timestampToCompare.test(listelement.date));
     }
   }

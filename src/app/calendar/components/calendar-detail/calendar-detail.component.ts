@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
-import { RemoveMbEvent } from '../../actions/calendar.actions';
+import { DeleteMbEvent } from '../../actions/calendar.actions';
 
 @Component({
   selector: 'mb-calendar-detail',
@@ -21,7 +21,7 @@ export class CalendarDetailComponent {
   constructor(private readonly store: Store<AppState>) { }
 
   delete(eventid: string) {
-    this.store.dispatch(new RemoveMbEvent(eventid));
+    this.store.dispatch(new DeleteMbEvent(eventid));
   }
 
 }

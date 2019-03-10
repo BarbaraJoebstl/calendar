@@ -28,5 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
+https://medium.com/@tanya/ngrx-effects-stop-mapping-your-payload-958f37f2a809
 
 https://css-tricks.com/using-sass-control-scope-bem-naming/

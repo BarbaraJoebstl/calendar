@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SaveMbEvent } from '../../actions/calendar.actions';
+import { AddMbEvent } from '../../actions/calendar.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
 import { MbEvent } from '../../../shared/models/mbEvent.model';
@@ -41,7 +41,7 @@ export class CalendarEntryAddComponent implements OnInit {
       date: `${this.selectedYear}-${monthTS}-${this.selectedDay}`,
       description: newEventDesc});
 
-      this.store.dispatch(new SaveMbEvent(mbEvent));
+      this.store.dispatch(new AddMbEvent(mbEvent));
   }
 
   private generateUUID() : string {
