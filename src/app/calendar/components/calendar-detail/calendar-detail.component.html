@@ -1,24 +1,22 @@
-
-<div class="calendar-detail__day">{{selectedDay}}</div>
-<div [ngSwitch]="selectedWeekday">
-    <span *ngSwitchCase="0">Sunday</span>
-    <span *ngSwitchCase="1">Monday</span>
-    <span *ngSwitchCase="2">Tuesday</span>
-    <span *ngSwitchCase="3">Wednesday</span>
-    <span *ngSwitchCase="4">Thursday</span>
-    <span *ngSwitchCase="5">Friday</span>
-    <span *ngSwitchCase="6">Saturday</span>
-    <span *ngSwitchDefault>Sunday</span>
-</div>
-<div>
-    <h4>Events:</h4>
-    <div *ngFor="let event of eventsForDay">
-        <div>
-                {{event.description}}
-                {{event.date}}
-        </div>
-    
-        <span (click)=delete(event.id)>X</span>
+<div class="calendar-detail-centered">
+    <div class="day">{{selectedDay}}</div>
+    <div [ngSwitch]="selectedWeekday" class="weekday">
+        <span *ngSwitchCase="0">Sunday</span>
+        <span *ngSwitchCase="1">Monday</span>
+        <span *ngSwitchCase="2">Tuesday</span>
+        <span *ngSwitchCase="3">Wednesday</span>
+        <span *ngSwitchCase="4">Thursday</span>
+        <span *ngSwitchCase="5">Friday</span>
+        <span *ngSwitchCase="6">Saturday</span>
+        <span *ngSwitchDefault>Sunday</span>
     </div>
+</div>
 
+<div *ngIf="eventsForDay && eventsForDay.length" class="calendar-detail-left">
+    <h4>Current Events</h4>
+    <ul>
+        <li *ngFor="let event of eventsForDay"><span>{{event.description}}</span>
+            <span (click)=delete(event.id) title="delete event" class="clickable">x</span>
+        </li>
+    </ul>
 </div>

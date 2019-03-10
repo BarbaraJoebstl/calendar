@@ -1,8 +1,44 @@
-:host{
-    text-align: center;
+@import '../../../../style/mb-constants';
 
-    .calendar-detail__day {
-        font-size: 96px;
+:host{
+
+    .calendar-detail-centered {
+        text-align: center;
+        position: relative;
+        margin-bottom: 32px;
+
+        .day {
+            font-size: $font-size-xl;
+            font-weight: bold;
+        }
+    
+        .weekday{
+            font-size: $font-size-l;
+            text-transform: uppercase;
+            width: 100%;
+            position: absolute;
+            bottom: 0;            
+        }
+
     }
 
+    .calendar-detail-left {
+        text-align: left;
+        h4 {
+            font-size: $font-size-m;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        ul {
+            padding-left: 12px;
+            margin: 6px;
+            li {
+                display: flex;
+                min-width: 100px;   
+                font-size: $font-size-s;
+                justify-content: space-between;       
+            }
+        }
+    }
 }

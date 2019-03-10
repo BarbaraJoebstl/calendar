@@ -23,6 +23,7 @@ export class CalendarMainComponent {
   crazyArray: number[][];
 
   months = new Map([
+    // start the keys with 0 because of the JS date object
     [0, 'Jan'],
     [1, 'Feb'],
     [2, 'Mar'],
@@ -34,11 +35,9 @@ export class CalendarMainComponent {
     [8, 'Sep'],
     [9, 'Oct'],
     [10, 'Nov'],
-    [11, 'Dez']
+    [11, 'Dec']
   ]);
-
-   // needed for ux 
-   days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  days: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   
   constructor(private readonly store: Store<AppState>) {}
 
@@ -55,8 +54,8 @@ export class CalendarMainComponent {
     this.store.dispatch(new ChangeMonth(month));
   }
 
-  changeDay(day: number) : void {
-    this.store.dispatch(new ChangeDay(day));
+  changeDay(day: any) : void {
+    day.length === 0 ? alert('Please select a date') : this.store.dispatch(new ChangeDay(day));
   }
 
   isToday(day: number): boolean {
@@ -73,7 +72,7 @@ export class CalendarMainComponent {
 
   createWeekdayArray(year: number, month: number): any {
     let day = 1;
-    let weeks: number[][] = Array();
+    let weeks: any[][] = Array();
 
     let firstDayOfMonth = this.getWeekdayOfFirstDayOfMonth(year, month);
     let numberOfDaysInMonth = this.getNumberOfDays(year, month);
@@ -84,11 +83,11 @@ export class CalendarMainComponent {
       // days of a week
       for (let j = 0; j < 7; j++) {
         if(i === 0 && j < firstDayOfMonth) {
-          // create empty fields if week does not start on a sunday
-          continue;
+          // add placeholders if week does not start on a sunday
+          weeks[i].push('');
         } else if (day > numberOfDaysInMonth){
-          // Todo start again with numbers... but for next month until current loop is done
-          break;
+          // add placeholders for the rest of the last week
+          weeks[i].push('');
         } else {
           weeks[i].push(day);
           day++;

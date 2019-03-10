@@ -57,6 +57,17 @@ export function calendarReducer(state: CalendarState = initialCalendarState, act
             ...state,
             events: state.events ? [...state.events, action.payload] : new Array(action.payload)
         }
+        case CalendarActionType.REMOVE_MBEVENT:
+        return {
+            ...state,
+            events: state.events.filter((mbEvent) => mbEvent.id !== action.payload)
+        }
+        case CalendarActionType.DELETE_MBEVENT_FAIL:
+        return {
+            ...state,
+            //events: [...state.events, action.payload]
+        }
+
         default:
             return state;
     }

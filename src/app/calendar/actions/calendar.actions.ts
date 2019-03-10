@@ -3,8 +3,8 @@ import { MbEvent } from '../../shared/models/mbEvent.model';
 
 export enum CalendarActionType {
     LOAD_MBEVENTS = '[Load] MbEvents',
-    LOAD_MBEVENTS_SUCCESS = '[Load] MbEvents Success',
-    LOAD_MBEVENTS_FAIL = '[Load] MbEvents Fail',
+    LOAD_MBEVENTS_SUCCESS = '[Load] Mb Events Success',
+    LOAD_MBEVENTS_FAIL = '[Load] Mb Events Fail',
 
     SELECT_YEAR = '[Select] Year',
     SELECT_MONTH = '[Select] Month',
@@ -13,7 +13,12 @@ export enum CalendarActionType {
     ADD_MBEVENT = '[Add] MbEvent',
     ADD_MBEVENT_SUCCESS = '[Add] Mb Event Success',
     ADD_MBEVENT_FAIL = '[Add] Mb Event Fail',
-    SAVE_MBEVENT = '[Save] Mb Event'
+    SAVE_MBEVENT = '[Save] Mb Event',
+
+    DELETE_MBEVENT_FAIL = "[Delete] Mb Event Fail",
+    DELETE_MBEVENT_SUCCESS = "[Delete] Mb Event Success",
+    DELETE_MBEVENT = "[Delete] Mb Event",
+    REMOVE_MBEVENT = "[Remove] Mb Event"
 }
 
 export class LoadMbEvents implements Action {
@@ -63,6 +68,27 @@ export class AddMbEventSuccess implements Action {
 export class AddMbEventFail implements Action {
     public readonly type = CalendarActionType.ADD_MBEVENT_FAIL;
 }
+
+export class RemoveMbEvent implements Action {
+    public readonly type = CalendarActionType.REMOVE_MBEVENT;
+    constructor (public payload: string) {};
+}
+
+export class DeleteMbEvent implements Action {
+    public readonly type = CalendarActionType.DELETE_MBEVENT;
+    constructor (public payload: string) {};
+}
+
+export class DeleteMbEventSuccess implements Action {
+    public readonly type = CalendarActionType.DELETE_MBEVENT_SUCCESS;
+    constructor () {};
+}
+
+export class DeleteMbEventFail implements Action {
+    public readonly type = CalendarActionType.DELETE_MBEVENT_FAIL;
+    constructor () {};
+}
+
 export type CalendarActions = LoadMbEvents 
     | LoadMbEventsSuccess
     | LoadMbEventsFail
@@ -73,3 +99,7 @@ export type CalendarActions = LoadMbEvents
     | AddMbEventSuccess
     | AddMbEventFail
     | SaveMbEvent
+    | RemoveMbEvent
+    | DeleteMbEvent
+    | DeleteMbEventFail
+    | DeleteMbEventSuccess

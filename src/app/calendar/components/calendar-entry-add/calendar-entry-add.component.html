@@ -1,6 +1,9 @@
-<input 
-placeholder="add new event"
-(input)="newEvent = $event.target.value"
-(keyup.enter)="newEvent.length ? addEvent(newEvent) : null"
-/>
-<button (click)=addEvent(newEvent)>+</button>
+<div>
+    <input 
+    #newEventInput
+    placeholder="Create an event"
+    (keyup.enter)="addEvent(newEventInput.value); newEventInput.value=''"
+    (blur)="newEventInput.value=''"
+    />
+    <span (click)=addEvent(newEvent) class="clickable">+</span>
+</div>

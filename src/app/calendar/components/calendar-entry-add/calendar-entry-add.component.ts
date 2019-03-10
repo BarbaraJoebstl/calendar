@@ -25,11 +25,10 @@ export class CalendarEntryAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  getEvent(): void {
-    //this.store.dispatch()
-  }
-
   addEvent(newEventDesc: string): void {
+    if(!newEventDesc) {
+      return;
+    }
     // id should be generated on the backend. For now we generate it here
     let uuid = this.generateUUID();
     let monthTS = this.selectedMonth + 1;

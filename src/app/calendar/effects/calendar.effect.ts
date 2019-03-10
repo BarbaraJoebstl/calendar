@@ -48,42 +48,5 @@ export class CalendarEffects {
                 catchError(error => of (new LoadMbEventsFail()))
             )
         })
-    )    
-    
-}
-
-
-/*
-        //concatMap(payload => [
-            
-        ])
-
-            return this.mbEventService.addMbEvent(newEvent).pipe(
-                map((data) => {return new AddEventSuccess(data)}),
-                catchError(error => of (new AddEventFail))
-                // TODO hide loader
-                //finalize(() => )
-            )
-        })
-    ) 
-
-
-    @Effect()
-public signInSuccess$: Observable<Action> = this.actions$.pipe(
-  ofType( 'SIGN_IN_SUCCESS' ),
-  map( action => action.payload ),
-  concatMap( payload => [
-    new LoadDashboardData( payload.companyId ),
-    new LoadChatData( payload.userId )
-  ])
-);
-Th
-    
-
-    @Effect()
-    addEvent$: Observable<Action> = this.actions$.pipe(
-        ofType(CalenderActionType.ADD_MBEVENT_SUCCESS),
-
     )
-    */
-
+}

@@ -27,12 +27,8 @@ export class DateCalcService {
 
 
 
-    if (list) {
-      const filtered = list.filter(listelement => timestampToCompare.test(listelement.date));
-      console.log(list);
-      console.log(timestampToCompare);
-      console.log(filtered);
-      return filtered;
+    if (list) { 
+      return list.filter(listelement => timestampToCompare.test(listelement.date));
     }
   }
 

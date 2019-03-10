@@ -5,84 +5,85 @@
     display: flex;
     align-items: row;
 
-    .calendar-main {
-        width: 100%;
-        padding: 12px;
-
-    }
-
-    .calendar-main__year {
+    .year {
         display: flex;
         align-items: row;
-        justify-content: center;
+        justify-content: flex-end;
         color: $font-30;
-    }
-
-.calendar-main__months {
-    display: flex;
-    align-items: row;
-    justify-content: space-between;
-    font-size: 14px;
-    color: $font-50;
-    
-}
-
-
-
-.calendar-main__days {
-    display: flex;
-    align-items: row;
-    justify-content: space-between;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 16px;
-    color: $font-80;   
-}
-
-.calendar-main__days__weeks {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.calendar-main__days__weeks__day {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    color: $font-50;
-}
-
-
-    .current-day {
-        background-color: $primary-color;
-        color:$background-color;
-    }
-
-    .selected-day {
-        color: $background-color;
-        width: 20px;
-        height: 20px;
-        background: $primary-color;
-        text-align: center;
-        border-radius: 50%;    
-        line-height: 20px;
-        box-sizing: content-box;   
-    }
-    
-
-    .selected-month {
         font-weight: bold;
-        color: $font-100;
+        font-size: $font-size-l;
+        padding: 0 12px;
+        padding-bottom: 5px;
+
+        .current-year {
+            padding-left: 6px;
+            padding-right: 6px;
+        }
     }
 
-    .event::after {
-            content: '';
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            -moz-border-radius: 7.5px;
-            -webkit-border-radius: 7.5px;
-            border-radius: 5px;
-            background-color: #69b6d5;
+    .months {
+        box-sizing: border-box;
+        display: flex;
+        align-items: row;
+        justify-content: space-between;
+        padding: 0 12px;
+        padding-bottom: 5px;
+        font-size: $font-size-m;
+        color: $font-80;
+        border-bottom: 1px solid $font-30; 
+
+        .selected {
+            font-weight: bold;
+            color: $font-100;
+        }
+    }
+
+    table{
+        th {
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 12px;
+            color: $font-80;
+        }
+        tr {        
+            height: 36px;
+            td {
+                color: $font-80;
+                position: relative;
+                width: 26px;
+                height: 36px;
+                text-align: center;
+                vertical-align: middle;
+        
+                .content {
+                    display: inline-block;
+                    text-align: center;
+                    width: 24px;
+                    left: 25%;
+                    top: 25%;
+
+                    &.selected-day {
+                        font-weight: bold;
+                        color: $background-color;
+                        background: $primary-color;
+                        border-radius: 50%;
+                        line-height: 24px;    
+                    }
+
+                }
+               
+                &.event::after {
+                    position: absolute;
+                    display: inline-block;
+                    top: 4px;
+                    right: 8px;
+                    content: '';
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background-color: #69b6d5;
+                }
+            }
+        }
     }
 }
