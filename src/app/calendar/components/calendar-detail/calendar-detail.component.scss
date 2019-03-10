@@ -32,12 +32,10 @@
         }
 
         ul {
-            padding-left: 12px;
-            margin: 6px;
+            padding-left: 0;
             
             li {
                 display: flex;
-                min-width: 100px;   
                 font-size: $font-size-s;
                 justify-content: space-between;       
             }

@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { MbEventService } from '../services/mb-event.service';
 import { CalendarActionType, AddMbEvent, AddMbEventSuccess, AddMbEventFail, LoadMbEventsSuccess, LoadMbEventsFail, LoadMbEvents, DeleteMbEventSuccess, DeleteMbEventFail, DeleteMbEvent} from '../actions/calendar.actions';
-import { AppState } from 'src/app/app-state.model';
-import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import {catchError, map, mergeMap, concatMap} from 'rxjs/operators';
 
@@ -12,8 +10,7 @@ import {catchError, map, mergeMap, concatMap} from 'rxjs/operators';
 export class CalendarEffects {
     constructor(
         private actions$: Actions,
-        private mbEventService: MbEventService,
-        private store: Store<AppState>) {}
+        private mbEventService: MbEventService) {}
  
     @Effect()
     loadEvents$  = this.actions$.pipe(

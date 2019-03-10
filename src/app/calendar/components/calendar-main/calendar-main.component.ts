@@ -92,8 +92,7 @@ export class CalendarMainComponent {
   }
 
   private getNumberOfDays(year: number, month: number): number {
-    month += 1;
-    return  new Date(year, month, 0).getDate();
+    return 32 - new Date(year, month, 32).getDate();
   }
 
   /**

@@ -15,7 +15,8 @@
 <div class="calendar-detail-left" *ngIf="eventsForDay && eventsForDay.length">
     <h4>Current Events</h4>
     <ul>
-        <li *ngFor="let event of eventsForDay"><span>{{event.description}}</span>
+        <li *ngFor="let event of eventsForDay">
+            <span>{{event.description}}</span>
             <span (click)=delete(event.id) title="delete event" class="clickable">x</span>
         </li>
     </ul>
