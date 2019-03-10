@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 import { map } from 'rxjs/operators';
-import { JsonStoreObject } from 'src/app/shared/models/jsonStoreObject.model';
-
+import { JsonStoreObject } from '../models/jsonStoreObject.model';
+import { MbEvent } from '../models/mbEvent.model';
 
 @Injectable({
   providedIn: 'root'

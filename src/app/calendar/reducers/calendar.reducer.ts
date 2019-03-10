@@ -1,7 +1,7 @@
 import { CalendarActions, CalendarActionType } from '../actions/calendar.actions';
-import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { DateCalcService } from '../services/date-calc.service';
+import { MbEvent } from '../models/mbEvent.model';
 
 export interface CalendarState {
     selectedYear: number,

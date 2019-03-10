@@ -3,7 +3,7 @@ import { getSelectedYear, getSelectedMonth, getSelectedDay, getSelectedWeekday, 
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app-state.model';
-import { MbEvent } from 'src/app/shared/models/mbEvent.model';
+import { MbEvent } from '../../models/mbEvent.model';
 
 @Component({
   selector: 'mb-calendar-container',

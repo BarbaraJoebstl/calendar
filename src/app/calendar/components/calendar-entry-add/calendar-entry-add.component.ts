@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AddMbEvent } from '../../actions/calendar.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
-import { MbEvent } from '../../../shared/models/mbEvent.model';
+import { MbEvent } from '../../models/mbEvent.model';
 
 @Component({
   selector: 'mb-calendar-entry-add',

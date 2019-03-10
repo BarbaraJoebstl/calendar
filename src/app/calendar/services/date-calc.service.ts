@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MbEvent } from 'src/app/shared/models/mbEvent.model';
+import { MbEvent } from '../models/mbEvent.model';
 
 @Injectable({
   providedIn: 'root'

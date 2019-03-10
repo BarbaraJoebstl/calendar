@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
 import { DeleteMbEvent } from '../../actions/calendar.actions';
+import { MbEvent } from '../../models/mbEvent.model';
 
 @Component({
   selector: 'mb-calendar-detail',

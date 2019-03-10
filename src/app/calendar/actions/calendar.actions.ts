@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { MbEvent } from '../../shared/models/mbEvent.model';
+import { MbEvent } from '../models/mbEvent.model';
 
 export enum CalendarActionType {
     LOAD_MBEVENTS = '[Load] MbEvents',
