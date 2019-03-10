@@ -1,6 +1,5 @@
 @import '../../../../style/mb-constants';
 
-
 div {
     display: flex;
     align-items: row;
@@ -13,10 +12,10 @@ div {
         color: $background-color;
         font-size: $font-size-m;
         padding-bottom: 6px;
+        
         &::placeholder {
             color: $background-color;
             font-style: italic;
-        }
-        
+        }  
     }
 }

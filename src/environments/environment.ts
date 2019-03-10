@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://www.jsonstore.io/f999a376e273f049948013774833a4b2eb4e845ec8e15b9bed2c9e5b932762c2'
+  apiBaseUrl: 'https://www.jsonstore.io/f999a376e273f049948013774833a4b2eb4e845ec8e15b9bed2c9e5b932762c2/calendar/'
 };
 
-/*
+/*s
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *

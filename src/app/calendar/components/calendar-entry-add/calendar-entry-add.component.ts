@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AddMbEvent } from '../../actions/calendar.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';
@@ -9,7 +9,7 @@ import { MbEvent } from '../../../shared/models/mbEvent.model';
   templateUrl: './calendar-entry-add.component.html',
   styleUrls: ['./calendar-entry-add.component.scss']
 })
-export class CalendarEntryAddComponent implements OnInit {
+export class CalendarEntryAddComponent {
 
   @Input()
   selectedDay: number;
@@ -22,15 +22,12 @@ export class CalendarEntryAddComponent implements OnInit {
 
   constructor(private store: Store<AppState>) { }
 
-  ngOnInit() {
-  }
-
   addEvent(newEventDesc: string): void {
     if(!newEventDesc) {
       return;
     }
     // id should be generated on the backend. For now we generate it here
-    let uuid = this.generateUUID();
+    let uuid = this.generateEventId();
     let monthTS = this.selectedMonth + 1;
 
     let mbEvent: MbEvent = ({
@@ -39,18 +36,14 @@ export class CalendarEntryAddComponent implements OnInit {
       month: this.selectedMonth, 
       day: this.selectedDay, 
       date: `${this.selectedYear}-${monthTS}-${this.selectedDay}`,
-      description: newEventDesc});
-
+      description: newEventDesc
+    });
+    
       this.store.dispatch(new AddMbEvent(mbEvent));
   }
 
-  private generateUUID() : string {
-      var dt = new Date().getTime();
-      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = (dt + Math.random()*16)%16 | 0;
-          dt = Math.floor(dt/16);
-          return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-      });
-      return uuid;
+  private generateEventId() : string {
+      const random = Math.random().toString(36).substr(2, 9);
+      return `event-${random}`;
   }
 }

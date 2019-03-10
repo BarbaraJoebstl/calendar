@@ -20,8 +20,7 @@ export class CalendarMainComponent {
   @Input()
   eventsForMonth: MbEvent[];
 
-  crazyArray: number[][];
-
+  weekdayArray: number[][];
   months = new Map([
     // start the keys with 0 because of the JS date object
     [0, 'Jan'],
@@ -42,7 +41,7 @@ export class CalendarMainComponent {
   constructor(private readonly store: Store<AppState>) {}
 
   ngOnChanges(): void {
-    this.crazyArray = this.createWeekdayArray(this.selectedYear, this.selectedMonth);
+    this.weekdayArray = this.createWeekdayArray(this.selectedYear, this.selectedMonth);
   }
 
   changeYear(count: number): void {
@@ -56,11 +55,6 @@ export class CalendarMainComponent {
 
   changeDay(day: any) : void {
     day.length === 0 ? alert('Please select a date') : this.store.dispatch(new ChangeDay(day));
-  }
-
-  isToday(day: number): boolean {
-    let month = this.selectedMonth + 1;
-     return `${this.selectedYear}-${month}-${day}` === new Date().toISOString().slice(0,10) ? true : false;
   }
 
 /**
@@ -97,15 +91,9 @@ export class CalendarMainComponent {
     return weeks;
   }
 
-  /**
-   * used to get the number of days in a month, depending on 
-   * 
-   * TODO explain magin number
-   * @param year 
-   * @param month 
-   */
   private getNumberOfDays(year: number, month: number): number {
-    return (32 - new Date(year, month, 32).getDate());
+    month += 1;
+    return  new Date(year, month, 0).getDate();
   }
 
   /**
@@ -121,12 +109,16 @@ export class CalendarMainComponent {
     return (new Date(year, month).getDay());
   }
 
+  private hasEvent(day: number): boolean {
+    if(this.eventsForMonth) {
+      return this.eventsForMonth.filter(event => event.day === day).length >= 1 ? true: false;
+    }
+    return false;}
 
-hasEvent(day: number): boolean {
-  if(this.eventsForMonth) {
-    return this.eventsForMonth.filter(event => event.day === day).length >= 1 ? true: false;
-  }
-  return false;
-}
+  
+  private isToday(day: number): boolean {
+    let month = this.selectedMonth + 1;
+      return `${this.selectedYear}-${month}-${day}` === new Date().toISOString().slice(0,10) ? true : false;
+  }  
 
 }

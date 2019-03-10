@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app-state.model';

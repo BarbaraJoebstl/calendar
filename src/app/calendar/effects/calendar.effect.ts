@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { MbEventService } from '../services/mbEvent.service';
+import { MbEventService } from '../services/mb-event.service';
 import { CalendarActionType, AddMbEvent, AddMbEventSuccess, AddMbEventFail, LoadMbEventsSuccess, LoadMbEventsFail, LoadMbEvents, DeleteMbEventSuccess, DeleteMbEventFail, DeleteMbEvent} from '../actions/calendar.actions';
 import { AppState } from 'src/app/app-state.model';
 import { Store } from '@ngrx/store';
@@ -34,7 +34,7 @@ export class CalendarEffects {
         concatMap( addEventAction => {
             return this.mbEventService.addMbEvent(addEventAction.payload).pipe(
                 map(response => {return new AddMbEventSuccess}),
-                catchError(error => of (new AddMbEventFail(addEventAction.payload)))
+                catchError(error => of (new AddMbEventFail(addEventAction.payload.id)))
             );
         })
     );

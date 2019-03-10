@@ -1,33 +1,52 @@
 # Calendar
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
-
-## Development server
-
+ 
+## Quickstart
+Run `npm install` to install all needed npm packages
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+As a backend https://www.jsonstore.io/ is used.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## General Structure:
 
-## Build
+### optional folders in module:
+- __actions:__ folder contains actions for dealing with store (NgRx)
+- __components:__ folder filled with dumb components that contain most of html
+- __containers:__ folder contains logic for store connection and calling dump components
+- __reducers:__ folder contains reducer for manipulating parts of the store
+- __services:__ folder contains different services if needed
+- __pipes:__ folder contains different pipes if needed
+- __directives:__ folder contains different directives if needed
+- ...
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Current Structure
+### calendar module: 
+contains everything related to calendar
 
-## Running unit tests
+#### containers:
+- __calendar-container:__
+  - contains `mb-calendar-main`, `mb-calendar-detail` and `mb-add-entry` components
+  - uses filteredLists of store to pass events
+#### components:
+- __mb-calendar-main:__
+    - displays the selected date - by default today
+    - day with events are marked with a blue dot
+    - selectable year, month and day
+  
+- __mb-calendar-detail:__ 
+    - shows the currend day and weekday,
+    - shows an eventlist for the current day 
+    - implements delete action for a single event
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- __mb-add-entry:__
+    - implements add event functionality 
 
-## Running end-to-end tests
+## State Management
+This project uses
+- [ngRx](https://ngrx.io/) as reactive state pattern
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-
-https://medium.com/@tanya/ngrx-effects-stop-mapping-your-payload-958f37f2a809
-
-https://css-tricks.com/using-sass-control-scope-bem-naming/

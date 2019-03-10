@@ -1,4 +1,4 @@
-<div class="calendar-main"> 
+<div> 
   <div class="year">
     <div (click)=changeYear(-1) class="clickable"> < </div>
     <div class="current-year"> {{selectedYear}} </div>
@@ -16,15 +16,12 @@
       <tr>
           <th *ngFor="let weekday of days">{{weekday}}</th>
       </tr>
-      <tr *ngFor="let week of crazyArray">
+      <tr *ngFor="let week of weekdayArray">
         <td *ngFor="let day of week" 
-        [ngClass] = "{         
-          'event': hasEvent(day),
-          'clickable': day != ''
-          }"
-          (click) = changeDay(day)> 
+            [ngClass] = "{'event': hasEvent(day), 'clickable': day != ''}"
+            (click) = changeDay(day)>
           <div class="content" 
-          [ngClass]="{'selected-day': day === selectedDay}">
+              [ngClass]="{'selected-day': day === selectedDay, 'today': isToday(day)}">
               {{day}}
           </div>
         </td>

@@ -4,6 +4,7 @@ import { MbEvent } from 'src/app/shared/models/mbEvent.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DateCalcService {
 
   constructor() { }
@@ -22,20 +23,14 @@ export class DateCalcService {
   public static filterEventsForCurrentMonth(year, month, list): MbEvent[] {
     month +=1;
     const timestampToCompare: RegExp = new RegExp(`^${year}-${month}`);
-
-    if (list) { 
-      console.log('list', list);
-      return list.filter(listelement => timestampToCompare.test(listelement.date));
-    }
+    return list.filter(listelement => timestampToCompare.test(listelement.date));
+    
   }
 
   public static filterEventsForCurrentDay(year, month, day, list): MbEvent[] {
     month +=1;
     var timestampToCompare = `${year}-${month}-${day}`;
-
-    if (list) {
-      return  list.filter(listelement => listelement.date === timestampToCompare);;
-    }
+    return  list.filter(listelement => listelement.date === timestampToCompare);; 
   }
 
 }

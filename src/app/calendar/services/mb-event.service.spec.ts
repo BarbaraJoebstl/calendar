@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MbEventService } from './mbEvent.service';
+import { MbEventService } from './mb-event.service';
 
 describe('MbEventService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
