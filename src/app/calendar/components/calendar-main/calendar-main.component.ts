@@ -117,7 +117,9 @@ export class CalendarMainComponent {
   
   private isToday(day: number): boolean {
     let month = this.selectedMonth + 1;
-      return `${this.selectedYear}-${month}-${day}` === new Date().toISOString().slice(0,10) ? true : false;
+    let today = new Date().toISOString().slice(0,10).replace(/(^|-)0+/g, "$1");
+   
+    return `${this.selectedYear}-${month}-${day}` === today ? true: false;
   }  
 
 }
